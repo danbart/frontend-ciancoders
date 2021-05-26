@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/common/interfaces/product';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +7,11 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public productService: ProductService) {}
-
+  product: Product;
+  lodingPrdoduct = false;
+  constructor() {}
+  // public productService: ProductService
   ngOnInit(): void {
-    this.productService.getProduct().subscribe(console.log);
+    // this.productService.getProduct().subscribe(console.log);
   }
 }
