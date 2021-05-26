@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div>
+  <h2 class="title">Products</h2>
+  <hr />
+  <div class="row">
+    <div class="card-group">
+      <div *ngIf="lodingPrdoduct" class="alert alert-light text-center">
+        loadign....
+      </div>
+      <div *ngIf="product" class="card">
+        <div class="card-body">
+          <h5 class="card-title">"nombre</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Q precio</h6>
+          <p class="card-text">desc</p>
+          <a href="" class="card-link"> Show - </a>
+
+          <a href="" class="card-link"> loading... </a>
+          <a href="" class="card-link"> category </a>
+        </div>
+      </div>
+      <div *ngIf="!product" class="alert alert-danger text-center">
+        No hay productos.
+      </div>
+    </div>
+  </div>
+</div>

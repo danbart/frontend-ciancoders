@@ -4,6 +4,7 @@ import { AUTH, DASHBOARD } from './common/constants';
 import { AuthModule } from './components/auth/auth.module';
 
 const routes: Routes = [
+  // { path: '', pathMatch: 'full', redirectTo: `/${DASHBOARD}/` },
   {
     path: AUTH,
     children: [
