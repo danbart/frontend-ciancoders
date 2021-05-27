@@ -8,6 +8,7 @@ import {
   AUTH,
   LOGIN,
   PROFILE,
+  REFRESH,
   REGISTER,
   USER,
 } from '../common/constants';
@@ -20,7 +21,9 @@ const baseUrl = `${API}`;
 export class AuthService {
   loginUrl = `${API}/${AUTH}/${LOGIN}`;
   registerUrl = `${API}/${AUTH}/${REGISTER}`;
+  refreshUrl = `${API}/${AUTH}/${REFRESH}`;
   userUrl = `${API}/${AUTH}/${PROFILE}`;
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -51,5 +54,9 @@ export class AuthService {
 
   getUserProfile(): Promise<any> {
     return this.http.get(this.userUrl, { headers: this.headers }).toPromise();
+  }
+
+  editUserInfo(user: UserInterface): Promise<any> {
+    return this.http.put(this.userUrl, user).toPromise();
   }
 }
