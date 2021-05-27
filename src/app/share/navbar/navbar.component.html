@@ -18,16 +18,26 @@
           <a
             class="nav-link"
             aria-current="page"
-            [routerLink]="['dashboard']"
+            [routerLink]="[dashboard]"
             routerLinkActive="active"
             >Products</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a
+            class="nav-link"
+            [routerLink]="[addProduct]"
+            routerLinkActive="active"
+            >Add Product</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a
+            class="nav-link"
+            [routerLink]="[addProduct]"
+            routerLinkActive="active"
+            >Sales</a
+          >
         </li>
       </ul>
     </div>

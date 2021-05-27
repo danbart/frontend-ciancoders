@@ -3,6 +3,7 @@ import {
   AUTH,
   DASHBOARD,
   LOGIN,
+  PRODUCT_ADD,
   PROFILE,
   REGISTER,
 } from 'src/app/common/constants';
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
   profile: string = PROFILE;
   login: string = `${AUTH}/${LOGIN}`;
   register: string = `${AUTH}/${REGISTER}`;
+  addProduct: string = PRODUCT_ADD;
   isLoggedIn = false;
 
   constructor(public authService: AuthService) {}
