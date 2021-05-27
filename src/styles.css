@@ -2,10 +2,16 @@
 html,
 body {
   height: 100%;
+  margin-top: 20px;
+  color: #829ed4;
+  text-align: left;
 }
 html {
   height: 100%;
 }
 body {
   min-height: 100%;
+}
+.main-body {
+  padding: 15px;
 }
