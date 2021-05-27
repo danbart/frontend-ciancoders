@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
     this.authService
       .signIn(this.siginForm.value)
       .then((user) => {
-        console.log(user);
         localStorage.setItem(ACCESS_TOKEN, user.access_token);
         localStorage.setItem(USER, JSON.stringify(user.user));
         Swal.fire({
