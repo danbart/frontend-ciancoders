@@ -12,19 +12,23 @@
     </div>
 
     <!-- Login Form -->
-    <form>
+    <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
       <input
         type="text"
         id="nick_name"
         class="fadeIn second"
         name="nick_name"
+        formControlName="nick_name"
         placeholder="Nickname"
+        required
       />
       <input
         type="email"
         id="login"
         class="fadeIn third"
         name="email"
+        formControlName="email"
+        required
         placeholder="Email"
       />
       <input
@@ -32,6 +36,8 @@
         id="password"
         class="fadeIn fourth"
         name="password"
+        formControlName="password"
+        required
         placeholder="Password"
       />
       <input
@@ -39,6 +45,8 @@
         id="password_confirmation"
         class="fadeIn fourth"
         name="password_confirmation"
+        formControlName="password_confirmation"
+        required
         placeholder="password Confirmation"
       />
       <input type="submit" class="fadeIn fourth" value="Register" />
