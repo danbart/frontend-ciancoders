@@ -25,6 +25,7 @@ export class UserComponent implements OnInit {
           title: 'Oops...',
           text: err.error.error,
         });
+        this.authService.doLogout();
       });
   }
 }
