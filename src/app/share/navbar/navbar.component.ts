@@ -1,5 +1,11 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { AUTH, DASHBOARD, LOGIN, REGISTER } from 'src/app/common/constants';
+import { Component, OnInit } from '@angular/core';
+import {
+  AUTH,
+  DASHBOARD,
+  LOGIN,
+  PROFILE,
+  REGISTER,
+} from 'src/app/common/constants';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -7,17 +13,16 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnChanges {
+export class NavbarComponent implements OnInit {
   dashboard: string = DASHBOARD;
-  login = `${AUTH}/${LOGIN}`;
-  register = `${AUTH}/${REGISTER}`;
+  profile: string = PROFILE;
+  login: string = `${AUTH}/${LOGIN}`;
+  register: string = `${AUTH}/${REGISTER}`;
   isLoggedIn = false;
 
   constructor(public authService: AuthService) {}
 
-  ngOnInit(): void {}
-
-  ngOnChanges() {
-    this.isLoggedIn = this.authService.isLoggedIn();
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe((resp) => (this.isLoggedIn = resp));
   }
 }
