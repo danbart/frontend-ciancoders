@@ -24,14 +24,17 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.authService.isLoggedIn() !== true) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Access not allowed!',
-      });
-      this.router.navigate([`${AUTH}/${LOGIN}`]);
-    }
+    this.authService.isLoggedIn().subscribe((resp) => {
+      if (resp !== true) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Access not allowed!',
+        });
+        this.router.navigate([`${AUTH}/${LOGIN}`]);
+      }
+    });
+
     return true;
   }
 }
