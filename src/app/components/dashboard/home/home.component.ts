@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryInterface } from 'src/app/common/interfaces/category.interface';
 import { ProductInterface } from 'src/app/common/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HomeComponent implements OnInit {
   product: ProductInterface[] = [];
-  category: CategoryInterface;
+
   lodingPrdoduct = false;
   constructor(public productService: ProductService) {}
 
@@ -21,6 +20,8 @@ export class HomeComponent implements OnInit {
   }
 
   searchCategory(id: number) {
-    return this.productService.getCategoryId(id).then((c) => c.category);
+    let category;
+    this.productService.getCategoryId(id).then((c) => (category = c.category));
+    return category;
   }
 }
