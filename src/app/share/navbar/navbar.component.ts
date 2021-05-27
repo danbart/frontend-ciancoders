@@ -7,6 +7,7 @@ import {
   PROFILE,
   REGISTER,
 } from 'src/app/common/constants';
+import { MY_SALES } from '../../common/constants';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -20,11 +21,16 @@ export class NavbarComponent implements OnInit {
   login: string = `${AUTH}/${LOGIN}`;
   register: string = `${AUTH}/${REGISTER}`;
   addProduct: string = PRODUCT_ADD;
+  mySales: string = MY_SALES;
   isLoggedIn = false;
 
   constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn().subscribe((resp) => (this.isLoggedIn = resp));
+  }
+
+  logout() {
+    this.authService.doLogout();
   }
 }

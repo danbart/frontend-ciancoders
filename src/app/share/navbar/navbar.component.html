@@ -32,38 +32,33 @@
           >
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="[addProduct]"
-            routerLinkActive="active"
+          <a class="nav-link" [routerLink]="[mySales]" routerLinkActive="active"
             >Sales</a
           >
         </li>
       </ul>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <div *ngIf="!isLoggedIn">
-        <li class="nav-item">
-          <a
-            [routerLink]="[register]"
-            class="nav-link"
-            routerLinkActive="active"
-            ><i class="fas fa-user"></i> Sign Up</a
-          >
-        </li>
-        <li class="nav-item">
-          <a [routerLink]="[login]" class="nav-link" routerLinkActive="active"
-            ><i class="fas fa-sign-in-alt"></i> Log in</a
-          >
-        </li>
-      </div>
-      <div *ngIf="isLoggedIn">
-        <li class="nav-item">
-          <a [routerLink]="[profile]" class="nav-link" routerLinkActive="active"
-            ><i class="fas fa-user"></i> Profile</a
-          >
-        </li>
-      </div>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a [routerLink]="[register]" class="nav-link" routerLinkActive="active"
+          ><i class="fas fa-user"></i> Sign Up</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a [routerLink]="[login]" class="nav-link" routerLinkActive="active"
+          ><i class="fas fa-sign-in-alt"></i> Log in</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="[profile]" class="nav-link" routerLinkActive="active"
+          ><i class="fas fa-user"></i> Profile</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a (click)="logout()" class="nav-link pointer" routerLinkActive="active"
+          ><i class="fas fa-sign-out-alt"></i> Logout</a
+        >
+      </li>
     </ul>
   </div>
 </nav>
