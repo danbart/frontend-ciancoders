@@ -13,3 +13,5 @@ export const CATEGORY = 'category';
 export const PROFILE = 'user-profile';
 export const EDIT_PROFILE = 'edit-profile';
 export const PRODUCT_ADD = 'add-product';
+export const MY_SALES = 'my-sales';
+export const SALE = 'sale';
