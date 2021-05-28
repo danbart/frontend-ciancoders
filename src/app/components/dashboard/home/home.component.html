@@ -2,19 +2,27 @@
   <h2 class="title">Products</h2>
   <hr />
   <div class="row">
-    <div *ngIf="product.length > 0" class="card-group">
+    <div *ngIf="product.length > 0" class="card-columns">
       <div *ngIf="lodingPrdoduct" class="alert alert-light text-center">
         loadign....
       </div>
-      <div *ngFor="let prod of product" class="card">
+
+      <div
+        *ngFor="let prod of product"
+        class="card bg-secondary mb-3"
+        style="max-width: 20rem"
+      >
+        <div class="card-header">{{ prod.name }}</div>
         <div class="card-body">
-          <h5 class="card-title">{{ prod.name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Q {{ prod.price }}</h6>
+          <h5 class="card-title">Q {{ prod.price }}</h5>
           <p class="card-text">{{ prod.desciption }}</p>
-          <a href="" class="card-link"> Stock - {{ prod.stock }} </a>
+
           <a href="" class="card-link">
             {{ prod.id_category }}
           </a>
+        </div>
+        <div class="card-footer bg-transparent border-info">
+          <a href="" class="card-link"> Stock - {{ prod.stock }} </a>
         </div>
       </div>
       <div *ngIf="product.length === 0" class="alert alert-danger text-center">
