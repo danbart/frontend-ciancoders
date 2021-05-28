@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { USER } from 'src/app/common/constants';
 import { ProductInterface } from 'src/app/common/interfaces/product.interface';
+import { UserInterface } from 'src/app/common/interfaces/user.interface';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HomeComponent implements OnInit {
   product: ProductInterface[] = [];
+  userInfo: UserInterface;
 
   lodingPrdoduct = false;
   constructor(public productService: ProductService) {}
@@ -17,6 +20,7 @@ export class HomeComponent implements OnInit {
     this.productService
       .getProduct()
       .then((product) => (this.product = product));
+    this.userInfo = JSON.parse(localStorage.getItem(USER));
   }
 
   searchCategory(id: number) {

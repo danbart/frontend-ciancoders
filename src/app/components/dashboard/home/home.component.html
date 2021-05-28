@@ -2,11 +2,10 @@
   <h2 class="title">Products</h2>
   <hr />
   <div class="row">
+    <div *ngIf="product.length === 0" class="alert alert-light text-center">
+      loadign....
+    </div>
     <div *ngIf="product.length > 0" class="card-columns">
-      <div *ngIf="lodingPrdoduct" class="alert alert-light text-center">
-        loadign....
-      </div>
-
       <div
         *ngFor="let prod of product"
         class="card bg-secondary mb-3"
@@ -23,10 +22,14 @@
         </div>
         <div class="card-footer bg-transparent border-info">
           <a href="" class="card-link"> Stock - {{ prod.stock }} </a>
+          <a
+            class="card-link"
+            style="float: right; cursor: pointer"
+            *ngIf="prod.id_user !== userInfo.id"
+          >
+            <i class="fas fa-cart-plus fa-2x"></i>
+          </a>
         </div>
-      </div>
-      <div *ngIf="product.length === 0" class="alert alert-danger text-center">
-        No hay productos.
       </div>
     </div>
   </div>
