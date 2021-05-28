@@ -1,1 +1,76 @@
-<p>my-sale-detail works!</p>
+<div class="main-body" *ngIf="saleInfo !== null">
+  <h2 class="title">My Shopping # {{ saleInfo[0]?.id }}</h2>
+  <hr />
+  <div class="row">
+    <div class="col-md-2"><h6>Creation Date</h6></div>
+    <div class="col-md-4">
+      <span>{{ saleInfo[0]?.created_at }}</span>
+    </div>
+    <div class="col-md-2"><h6>Finish Date</h6></div>
+    <div class="col-md-4">
+      <span *ngIf="saleInfo[0]?.end_sale !== null">{{
+        saleInfo[0]?.end_sale
+      }}</span>
+      <button
+        *ngIf="saleInfo[0]?.end_sale === null"
+        class="btn btn-outline-danger"
+        (click)="finishBuy(saleInfo[0]?.id || 0)"
+      >
+        Finish Buying
+      </button>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Cancel Product</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of getSaleDetails; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ sale?.id_product }}</td>
+        <td>{{ sale?.amount }}</td>
+        <td>{{ sale?.unit_price }}</td>
+        <td>{{ sale?.total_price }}</td>
+        <td>
+          <button
+            class="btn btn-danger"
+            *ngIf="sale?.cancel_detail !== null"
+            disabled
+          >
+            {{ sale?.cancel_detail }}
+          </button>
+          <button
+            class="btn btn-danger"
+            *ngIf="
+              sale?.cancel_detail === null && saleInfo[0]?.end_sale === null
+            "
+            (click)="cancelDetailId(sale?.id)"
+          >
+            Cancel</button
+          ><button
+            class="btn btn-danger"
+            disabled
+            *ngIf="
+              sale?.cancel_detail === null && saleInfo[0]?.end_sale !== null
+            "
+          >
+            Cancel
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="main-body" *ngIf="saleInfo === null">
+  <h2 class="title">loading ....</h2>
+  <hr />
+</div>

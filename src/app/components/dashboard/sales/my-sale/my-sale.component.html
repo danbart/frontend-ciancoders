@@ -1,5 +1,5 @@
 <div class="main-body">
-  <h2 class="title">My Sales</h2>
+  <h2 class="title">My Shopping</h2>
   <hr />
 
   <table class="table">
@@ -18,7 +18,7 @@
         <td *ngIf="sale?.end_sale !== null">{{ sale?.end_sale }}</td>
         <td *ngIf="sale?.end_sale === null" class="bg-warning">Unfinished</td>
         <td>
-          <a [routerLink]="[sale?.id]" class="btn btn-primary">Edit</a>
+          <a [routerLink]="[sale?.id]" class="btn btn-primary">Show</a>
         </td>
       </tr>
     </tbody>
