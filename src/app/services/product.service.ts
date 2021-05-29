@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API, CATEGORY, PRODUCT } from '../common/constants';
+import { API, CATEGORY, DETAIL, PRODUCT, SALE } from '../common/constants';
 import { ProductInterface } from '../common/interfaces/product.interface';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { ProductInterface } from '../common/interfaces/product.interface';
 export class ProductService {
   productUrl = `${API}/${PRODUCT}`;
   categoryUrl = `${API}/${CATEGORY}`;
+  newSale = `${API}/${SALE}`;
 
   constructor(private http: HttpClient) {}
 
@@ -26,5 +27,19 @@ export class ProductService {
 
   postProduct(product: ProductInterface): Promise<any> {
     return this.http.post(this.productUrl, product).toPromise();
+  }
+
+  getProductoSaleId(id: number): Promise<any> {
+    return this.http.get(this.productUrl + '/' + id + '/' + SALE).toPromise();
+  }
+
+  postCreateSale(): Promise<any> {
+    return this.http.post(this.newSale, {}).toPromise();
+  }
+
+  postAddDetail(id: number, product: any): Promise<any> {
+    return this.http
+      .post(this.newSale + '/' + id + '/' + DETAIL, product)
+      .toPromise();
   }
 }

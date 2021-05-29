@@ -89,13 +89,14 @@ export class MySaleDetailComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete detail',
     }).then((result) => {
+      this.router.navigate([`${MY_SALES}/`]);
       this.saleService
         .putSalesIdDetailIdCancel(this.idSale, id)
         .then((resp) => {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'You shopping ends successfully',
+            title: 'You shopping canceled successfully',
             showConfirmButton: false,
             timer: 1500,
           });

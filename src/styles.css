@@ -6,3 +6,12 @@ body {
 .main-body {
   padding: 15px;
 }
+.my-validation-message::before {
+  display: none;
+}
+
+.my-validation-message i {
+  margin: 0 0.4em;
+  color: #f27474;
+  font-size: 1.4em;
+}

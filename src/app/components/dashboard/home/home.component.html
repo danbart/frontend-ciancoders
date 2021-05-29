@@ -26,8 +26,17 @@
             class="card-link"
             style="float: right; cursor: pointer"
             *ngIf="prod.id_user !== userInfo.id"
+            (click)="buyProduct(prod.id)"
           >
             <i class="fas fa-cart-plus fa-2x"></i>
+          </a>
+          <a
+            class="card-link"
+            style="float: right; cursor: pointer"
+            *ngIf="prod.id_user === userInfo.id"
+            [routerLink]="[prod.id + '/' + sale]"
+          >
+            <i class="fas fa-info-circle fa-2x"></i>
           </a>
         </div>
       </div>

@@ -1,0 +1,54 @@
+<div class="main-body">
+  <h2 class="title">My Product # {{ idProduct }}</h2>
+  <hr />
+  <div class="row">
+    <div class="col-md-1"><h6>Sold</h6></div>
+    <div class="col-md-3">
+      <span>{{ productSale?.Sold }}</span>
+    </div>
+    <div class="col-md-1"><h6>Cancel</h6></div>
+    <div class="col-md-3">
+      <span>{{ productSale?.Cancel }}</span>
+    </div>
+    <div class="col-md-1"><h6>Profit</h6></div>
+    <div class="col-md-3">
+      <span>{{ productSale?.Profit }}</span>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Cancel Product</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productSale?.response; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ product?.id_product }}</td>
+        <td>{{ product?.amount }}</td>
+        <td>{{ product?.unit_price }}</td>
+        <td>{{ product?.total_price }}</td>
+        <td>
+          <button
+            class="btn btn-danger"
+            *ngIf="product?.cancel_detail !== null"
+            disabled
+          >
+            {{ product?.cancel_detail }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="main-body">
+  <h2 class="title">loading ....</h2>
+  <hr />
+</div>
