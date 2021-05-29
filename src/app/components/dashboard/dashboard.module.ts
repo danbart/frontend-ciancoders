@@ -23,6 +23,7 @@ const routes: Routes = [
     AddComponent,
     MySaleComponent,
     MySaleDetailComponent,
+    SaleDetailComponent,
   ],
   imports: [
     CommonModule,

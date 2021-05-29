@@ -10,10 +10,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./sale-detail.component.css'],
 })
 export class SaleDetailComponent implements OnInit {
-  productSale = null;
+  public productSale = null;
   idProduct;
-  response = null;
-  loadingPage = true;
 
   constructor(
     public productService: ProductService,
@@ -27,9 +25,7 @@ export class SaleDetailComponent implements OnInit {
     this.productService
       .getProductoSaleId(this.idProduct)
       .then((res) => {
-        console.log(res);
-        this.loadingPage = false;
-        return [(this.productSale = res), (this.response = res.response)];
+        return (this.productSale = res);
       })
       .catch((err) => {
         Swal.fire({

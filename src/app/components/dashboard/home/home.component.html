@@ -27,6 +27,7 @@
             style="float: right; cursor: pointer"
             *ngIf="prod.id_user !== userInfo.id"
             (click)="buyProduct(prod.id)"
+            title="Add to shopping cart"
           >
             <i class="fas fa-cart-plus fa-2x"></i>
           </a>
@@ -35,6 +36,7 @@
             style="float: right; cursor: pointer"
             *ngIf="prod.id_user === userInfo.id"
             [routerLink]="[prod.id + '/' + sale]"
+            title="View sales information"
           >
             <i class="fas fa-info-circle fa-2x"></i>
           </a>
