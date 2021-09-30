@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
               '<i class="fa fa-info-circle"></i> Your amount is required'
             );
           } else {
-            console.log(this.productSale[0]?.id, parseInt(value));
             this.productService
               .postAddDetail(this.productSale[0]?.id, {
                 id_product: id,

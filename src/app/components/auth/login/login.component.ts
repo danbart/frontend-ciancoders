@@ -25,7 +25,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn) {
+      this.router.navigate([`${DASHBOARD}/`]);
+    }
+  }
 
   loginUser() {
     this.authService
@@ -41,6 +45,7 @@ export class LoginComponent implements OnInit {
         });
         this.siginForm.reset();
         this.router.navigate([`${DASHBOARD}/`]);
+        window.location.reload();
       })
       .catch((err) => {
         Swal.fire({

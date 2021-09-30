@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AUTH, LOGIN } from 'src/app/common/constants';
+import { AUTH, DASHBOARD, LOGIN } from 'src/app/common/constants';
 import { UserInterface } from 'src/app/common/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -27,7 +27,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn) {
+      this.router.navigate([`${DASHBOARD}/`]);
+    }
+  }
 
   registerUser() {
     this.authService
